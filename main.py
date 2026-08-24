@@ -1,5 +1,5 @@
-import time
 from selenium import webdriver
+import data
 # from selenium.webdriver.common.by import By
 from pages import AutoExercisePage
 
@@ -10,8 +10,8 @@ class TestAutomationExercise:
         cls.driver = webdriver.Chrome()
 
     def test_register_user(self):
-        # 2. Navigate to url 'http://automationexercise.com'
-        self.driver.get("http://automationexercise.com/")
+        # 2. Navigate to url
+        self.driver.get("https://automationexercise.com/")
         auto_exercise_page = AutoExercisePage(self.driver)
 
         # 3. Verify that home page is visible successfully
@@ -23,8 +23,9 @@ class TestAutomationExercise:
         # 5. Verify 'New User Signup!' is visible
         assert auto_exercise_page.is_new_user_signup_visible()
 
-        # Entering the name and email, and clicking the signup button
-        auto_exercise_page.signup_new_user()
+        # 6. Enter name and email address
+        # 7. Click 'Signup' button
+        auto_exercise_page.signup_new_user(data.FULL_NAME, data.EMAIL)
 
         # 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
         assert auto_exercise_page.enter_acct_info_visible()

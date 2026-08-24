@@ -41,21 +41,21 @@ class AutoExercisePage:
         ).is_displayed()
 
     # Method to enter the user's full name at the initial signup
-    def enter_signup_name(self):
-        self.driver.find_element(*self.FULL_NAME_FIELD_LOCATOR).send_keys(data.FULL_NAME)
+    def enter_signup_name(self, name):
+        self.driver.find_element(*self.FULL_NAME_FIELD_LOCATOR).send_keys(name)
 
     # Method to enter the user's email at initial signup
-    def enter_email_address(self):
-        self.driver.find_element(*self.EMAIL_FIELD_LOCATOR).send_keys(data.EMAIL)
+    def enter_email_address(self, email):
+        self.driver.find_element(*self.EMAIL_FIELD_LOCATOR).send_keys(email)
 
     # Method to click the signup button after entering the user's name and email
     def click_signup_button(self):
         self.driver.find_element(*self.SIGNUP_BUTTON_LOCATOR).click()
 
     # Combining methods into a clean workflow for the initial signup
-    def signup_new_user(self):
-        self.enter_signup_name()
-        self.enter_email_address()
+    def signup_new_user(self, name, email):
+        self.enter_signup_name(name)
+        self.enter_email_address(email)
         self.click_signup_button()
 
     # Method to verify that 'ENTER ACCOUNT INFORMATION' is visible
@@ -72,5 +72,3 @@ class AutoExercisePage:
     def enter_new_user_password(self):
         self.driver.find_element(*self.SIGNUP_PASSWORD_LOCATOR).send_keys(data.PASSWORD)
 
-    # Method to enter the new users DOB
-    def enter_date_of_birth(self):

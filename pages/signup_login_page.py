@@ -35,4 +35,3 @@ class SignupLoginPage:
     def signup_new_user(self, name, email):
         self.enter_signup_name(name)
         self.enter_email_address(email)
-        self.click_signup_button()

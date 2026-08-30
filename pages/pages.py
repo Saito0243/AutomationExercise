@@ -2,20 +2,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import data
 
 
 class AutoExercisePage:
 
     # Define Locators as class attributes
-    LOGO_LOCATOR = (By.CSS_SELECTOR,".logo img")
-    SIGNUP_LOGIN_LINK_LOCATOR = (By.LINK_TEXT, 'Signup / Login')
+    # LOGO_LOCATOR = (By.CSS_SELECTOR,".logo img")
+    # SIGNUP_LOGIN_LINK_LOCATOR = (By.LINK_TEXT, 'Signup / Login')
     NEW_USER_SIGNUP_LOCATOR = (By.CSS_SELECTOR, '.signup-form h2')
     FULL_NAME_FIELD_LOCATOR = (By.CSS_SELECTOR, 'input[data-qa="signup-name"]')
     EMAIL_FIELD_LOCATOR = (By.CSS_SELECTOR, 'input[data-qa="signup-email"]')
     SIGNUP_BUTTON_LOCATOR = (By.CSS_SELECTOR, 'button[data-qa="signup-button"]')
     ENTER_ACCT_INFO_LOCATOR = (By.CSS_SELECTOR, '#form .login-form h2 b')
-    TITLE_MR_RADIO_LOCATOR = (By.ID, 'gender1')
+    TITLE_MR_RADIO_LOCATOR = (By.ID, 'id_gender1')
     SIGNUP_PASSWORD_LOCATOR = (By.ID, 'password')
     BIRTH_DAY_DROPDOWN_LOCATOR = (By.ID, 'days')
     BIRTH_MONTH_DROPDOWN_LOCATOR = (By.ID, 'months')
@@ -25,10 +24,14 @@ class AutoExercisePage:
     FIRST_NAME_INPUT_LOCATOR = (By.ID, 'first_name')
     LAST_NAME_INPUT_LOCATOR = (By.ID, 'last_name')
     COMPANY_INPUT_LOCATOR = (By.ID, 'company')
-
-
-
-
+    ADDRESS_1_INPUT_LOCATOR = (By.ID, 'address1')
+    ADDRESS_2_INPUT_LOCATOR = (By.ID, 'address2')
+    COUNTRY_DROPDOWN_LOCATOR = (By.ID, 'country')
+    STATE_INPUT_LOCATOR = (By.ID, 'state')
+    CITY_INPUT_LOCATOR = (By.ID, 'city')
+    ZIP_CODE_INPUT_LOCATOR = (By.ID, 'zipcode')
+    MOBILE_NUMBER_INPUT_LOCATOR = (By.ID, 'mobile_number')
+    CREATE_ACCOUNT_BUTTON_LOCATOR = (By.CSS_SELECTOR, 'button[data-qa="create-account"]')
 
     def __init__(self, driver):
         self.driver = driver
@@ -81,12 +84,38 @@ class AutoExercisePage:
         self.driver.find_element(*self.TITLE_MR_RADIO_LOCATOR).click()
 
     # Method to enter a password for the new user
-    def enter_new_user_password(self):
-        self.driver.find_element(*self.SIGNUP_PASSWORD_LOCATOR).send_keys(data.PASSWORD)
+    def enter_new_user_password(self, password):
+        self.driver.find_element(*self.SIGNUP_PASSWORD_LOCATOR).send_keys(password)
 
     def enter_new_user_birth_day(self, day):
         dropdown = self.driver.find_element(*self.BIRTH_DAY_DROPDOWN_LOCATOR)
         Select(dropdown).select_by_visible_text(day)
+
+    def enter_new_user_birth_month(self, month):
+        dropdown = self.driver.find_element(*self.BIRTH_MONTH_DROPDOWN_LOCATOR)
+        Select(dropdown).select_by_visible_text(month)
+
+    def enter_new_user_birth_year(self, year):
+        dropdown = self.driver.find_element(*self.BIRTH_YEAR_DROPDOWN_LOCATOR)
+        Select(dropdown).select_by_visible_text(year)
+
+    def enter_new_user_full_birthdate(self, day, month, year):
+        self.enter_new_user_birth_day(day)
+        self.enter_new_user_birth_month(month)
+        self.enter_new_user_birth_year(year)
+
+    def select_receive_newsletter(self):
+        self.driver.find_element(*self.NEWSLETTER_CHECKBOX_LOCATOR).click()
+
+    def select_special_offers(self):
+        self.driver.find_element(*self.OPT_IN_CHECKBOX_LOCATOR).click()
+
+    def select_optional_opt_ins(self):
+        self.select_receive_newsletter()
+        self.select_special_offers()
+
+
+
 
 
 

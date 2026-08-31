@@ -17,7 +17,7 @@ class SignupLoginPage:
     def is_new_user_signup_visible(self):
         return self.wait.until(
             EC.visibility_of_element_located(self.NEW_USER_SIGNUP_LOCATOR)
-        ).is_displayed()
+        )
 
     # Method to enter the user's full name at the initial signup
     def enter_signup_name(self, name):

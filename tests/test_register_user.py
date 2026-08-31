@@ -26,7 +26,7 @@ def test_register_user(driver):
     assert signup_login_page.is_new_user_signup_visible()
 
     # 6. Enter name and email address
-    signup_login_page.signup_new_user(data.FULL_NAME, data.EMAIL)
+    signup_login_page.signup_new_user(data.SIGNUP_FULL_NAME, data.SIGNUP_EMAIL)
 
     # 7. Click 'Signup' button
     signup_login_page.click_signup_button()
@@ -67,7 +67,7 @@ def test_register_user(driver):
     assert home_page.is_logged_in_user_visible()
 
     # Check that user displayed is the correct user
-    assert home_page.get_logged_in_username() == data.FULL_NAME
+    assert home_page.get_logged_in_username() == data.LOGIN_FULL_NAME
 
     # 17. Click 'Delete Account' button
     home_page.click_delete_account()

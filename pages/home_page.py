@@ -28,7 +28,7 @@ class HomePage:
             EC.element_to_be_clickable(self.SIGNUP_LOGIN_LINK_LOCATOR)
         ).click()
 
-    # Method to check if 'Logged in user' message is present
+    # Method to check if 'Logged-in user' message is present
     def is_logged_in_user_visible(self):
         return self.wait.until(
             EC.visibility_of_element_located(self.LOGGED_IN_USER_LOCATOR)

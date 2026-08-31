@@ -1,8 +1,10 @@
 BASE_URL = "https://automationexercise.com/"
 
 # For Signup / Login Page
-FULL_NAME = "Testacular Testarossa"
-EMAIL = "testacular@testing.com"
+SIGNUP_FULL_NAME = "Testacular Testarossa"
+LOGIN_FULL_NAME = "John Smith"
+SIGNUP_EMAIL = "testacular@testing.com"
+LOGIN_EMAIL = "johnnysmith@test.com"
 
 # For 'Enter Account Information' - Registration Details page
 TITLE = "Mr"

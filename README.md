@@ -97,6 +97,10 @@ Install the required Python dependencies and run the test suite with:
 pytest
 ```
 
+Known Limitation
+
+Third-party advertisements: Automation Exercise is a publicly hosted website and may display third-party advertisements that intermittently obstruct the application during automated testing. These advertisements are not consistently present and may vary between test runs. Ad handling is currently outside the scope of this project.
+
 A specific test file can be run with:
 
 ```bash

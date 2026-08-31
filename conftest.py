@@ -19,6 +19,17 @@ def driver():
     driver = webdriver.Chrome(options=options)
     driver.set_window_size(1920, 1080)
 
+    driver.execute_cdp_cmd("Network.enable", {})
+
+    driver.execute_cdp_cmd(
+        "Network.setBlockedURLs",
+        {
+            "urls": [
+                "*://*.doubleclick.net/*"
+            ]
+        }
+    )
+
     yield driver
 
     driver.quit()

@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class SignupLoginPage:
 
+    # Define Locators as class attributes
     NEW_USER_SIGNUP_LOCATOR = (By.CSS_SELECTOR, '.signup-form h2')
     FULL_NAME_FIELD_LOCATOR = (By.CSS_SELECTOR, 'input[data-qa="signup-name"]')
     EMAIL_FIELD_LOCATOR = (By.CSS_SELECTOR, 'input[data-qa="signup-email"]')

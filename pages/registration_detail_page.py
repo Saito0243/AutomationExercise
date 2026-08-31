@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class RegistrationDetailPage:
 
-    # Declare locators as class attributes
+    # Define Locators as class attributes
     ENTER_ACCT_INFO_LOCATOR = (By.CSS_SELECTOR, '#form .login-form h2 b')
     TITLE_MR_RADIO_LOCATOR = (By.ID, 'id_gender1')
     SIGNUP_PASSWORD_LOCATOR = (By.ID, 'password')
@@ -45,17 +45,15 @@ class RegistrationDetailPage:
     def enter_new_user_password(self, password):
         self.driver.find_element(*self.SIGNUP_PASSWORD_LOCATOR).send_keys(password)
 
-    # Method to select the day of birth from the dropdown
+    # Methods to select the date of birth from the dropdowns
     def enter_new_user_birth_day(self, day):
         dropdown = self.driver.find_element(*self.BIRTH_DAY_DROPDOWN_LOCATOR)
         Select(dropdown).select_by_visible_text(day)
 
-    # Method to select the month of birth from the dropdown
     def enter_new_user_birth_month(self, month):
         dropdown = self.driver.find_element(*self.BIRTH_MONTH_DROPDOWN_LOCATOR)
         Select(dropdown).select_by_visible_text(month)
 
-    # Method to select the year of birth from the dropdown
     def enter_new_user_birth_year(self, year):
         dropdown = self.driver.find_element(*self.BIRTH_YEAR_DROPDOWN_LOCATOR)
         Select(dropdown).select_by_visible_text(year)
@@ -66,9 +64,11 @@ class RegistrationDetailPage:
         self.enter_new_user_birth_month(month)
         self.enter_new_user_birth_year(year)
 
+    # Methods to select optional opt-ins
     def select_receive_newsletter(self):
         self.driver.find_element(*self.NEWSLETTER_CHECKBOX_LOCATOR).click()
 
+    # Methods to enter data into fields under 'Address Information'
     def select_special_offers(self):
         self.driver.find_element(*self.OPT_IN_CHECKBOX_LOCATOR).click()
 
@@ -103,6 +103,7 @@ class RegistrationDetailPage:
     def enter_mobile_number(self, mobile_number):
         self.driver.find_element(*self.MOBILE_NUMBER_INPUT_LOCATOR).send_keys(mobile_number)
 
+    # Combining methods using dictionary to fill all fields
     def enter_address_info(self, address):
         self.enter_first_name(address["first_name"])
         self.enter_last_name(address["last_name"])
@@ -115,6 +116,7 @@ class RegistrationDetailPage:
         self.enter_zip_code(address["zip_code"])
         self.enter_mobile_number(address["mobile_number"])
 
+    # Method to click the 'Create Account' button
     def click_create_account_button(self):
         self.driver.find_element(*self.CREATE_ACCOUNT_BUTTON_LOCATOR).click()
 

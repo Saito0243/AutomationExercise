@@ -13,6 +13,8 @@ class SignupLoginPage:
     LOGIN_PASSWORD_FIELD_LOCATOR = (By.CSS_SELECTOR, 'input[data-qa="login-password"]')
     SIGNUP_BUTTON_LOCATOR = (By.CSS_SELECTOR, 'button[data-qa="signup-button"]')
     LOGIN_BUTTON_LOCATOR = (By.CSS_SELECTOR, 'button[data-qa="login-button"]')
+    LOGIN_INCORRECT_MESSAGE_LOCATOR = (By.XPATH , '//p[text()="Your email or password is incorrect!"]')
+
 
     def __init__(self, driver):
         self.driver = driver
@@ -63,3 +65,8 @@ class SignupLoginPage:
     # Method for clicking the login button
     def click_login_button(self):
         self.driver.find_element(*self.LOGIN_BUTTON_LOCATOR).click()
+
+    def is_login_incorrect_visible(self):
+        return self.wait.until(
+            EC.visibility_of_element_located(self.LOGIN_INCORRECT_MESSAGE_LOCATOR)
+        )

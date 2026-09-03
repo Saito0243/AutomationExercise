@@ -14,6 +14,7 @@ class SignupLoginPage:
     SIGNUP_BUTTON_LOCATOR = (By.CSS_SELECTOR, 'button[data-qa="signup-button"]')
     LOGIN_BUTTON_LOCATOR = (By.CSS_SELECTOR, 'button[data-qa="login-button"]')
     LOGIN_INCORRECT_MESSAGE_LOCATOR = (By.XPATH , '//p[text()="Your email or password is incorrect!"]')
+    EMAIL_ALREADY_EXISTS_LOCATOR = (By.XPATH , '//p[text()="Email Address already exist!"]')
 
 
     def __init__(self, driver):
@@ -69,4 +70,9 @@ class SignupLoginPage:
     def is_login_incorrect_visible(self):
         return self.wait.until(
             EC.visibility_of_element_located(self.LOGIN_INCORRECT_MESSAGE_LOCATOR)
+        )
+
+    def is_email_already_exists_visible(self):
+        return self.wait.until(
+            EC.visibility_of_element_located(self.EMAIL_ALREADY_EXISTS_LOCATOR)
         )

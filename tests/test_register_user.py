@@ -67,7 +67,7 @@ def test_register_user(driver):
     assert home_page.is_logged_in_user_visible()
 
     # Check that user displayed is the correct user
-    assert home_page.get_logged_in_username() == data.LOGIN_FULL_NAME
+    assert home_page.get_logged_in_username() == data.SIGNUP_FULL_NAME
 
     # 17. Click 'Delete Account' button
     home_page.click_delete_account()

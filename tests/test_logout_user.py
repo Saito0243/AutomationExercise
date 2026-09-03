@@ -33,5 +33,10 @@ def test_valid_user_login(driver):
     # 8. Verify that 'Logged in as username' is visible
     assert home_page.is_logged_in_user_visible()
 
-    # Check that user displayed is the correct user
-    assert home_page.get_logged_in_username() == data.LOGIN_FULL_NAME
+    # 9. Click 'Logout' button
+    home_page.click_logout_user()
+
+    # 10. Verify that user is navigated to login page
+    assert signup_login_page.is_new_user_signup_visible()
+
+

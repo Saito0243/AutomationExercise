@@ -11,6 +11,7 @@ class HomePage:
     SIGNUP_LOGIN_LINK_LOCATOR = (By.LINK_TEXT, 'Signup / Login')
     LOGGED_IN_USER_LOCATOR = (By.XPATH , '//a[contains(., "Logged in as")]')
     DELETE_ACCOUNT_LINK_LOCATOR = (By.LINK_TEXT, 'Delete Account')
+    LOGOUT_LOCATOR = (By.LINK_TEXT, 'Logout')
 
     def __init__(self, driver):
         self.driver = driver
@@ -44,3 +45,6 @@ class HomePage:
     # Method to click on the Delete Account link
     def click_delete_account(self):
         self.driver.find_element(*self.DELETE_ACCOUNT_LINK_LOCATOR).click()
+
+    def click_logout_user(self):
+        self.driver.find_element(*self.LOGOUT_LOCATOR).click()
